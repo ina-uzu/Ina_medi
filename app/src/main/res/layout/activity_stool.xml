@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView style="@style/Title" android:id="@+id/title" android:text="대변 횟수 측정"/>
+    <Button style="@style/Bt_prev"/>
+    <Button style="@style/Bt_next"/>
+
+    <RelativeLayout  style="@style/Body">
+
+        <TextView
+        android:id="@+id/tv_stool_num"
+        android:text="총 1회 기록"
+        style="@style/Content"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <TextView
+        android:text="대변 1회가 기록되었습니다"
+        style="@style/Content"
+        android:layout_above="@+id/tv_stool_num"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

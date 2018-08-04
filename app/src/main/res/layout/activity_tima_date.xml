@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView style="@style/Title" android:id="@+id/title" android:text="Title"/>
+    <Button style="@style/Bt_prev"/>
+    <Button style="@style/Bt_next"/>
+
+    <LinearLayout
+        android:layout_below="@+id/title"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="날짜와 시간을 입력하시고, 다음 버튼을 눌러주세요"
+            style="@style/Content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <DatePicker
+            android:id="@+id/date"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"/>
+
+        <TimePicker
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"/>
+    </LinearLayout>
+</RelativeLayout>

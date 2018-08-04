@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView style="@style/Title" android:id="@+id/title" android:text="MediProj"/>
+    <Button style="@style/Bt_prev"/>
+    <Button style="@style/Bt_next"/>
+
+    <RelativeLayout style="@style/Body">
+
+        <TextView
+            android:id="@+id/stool"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="50dp"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:text=" 대변 "
+            android:textColor="@color/White"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/urine"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/stool"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:text=" 소변 "
+            android:textColor="@color/White"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/consume"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/stool"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:text=" 섭취 "
+            android:textColor="@color/White"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</RelativeLayout>

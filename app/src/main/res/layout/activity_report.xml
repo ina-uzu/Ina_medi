@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView style="@style/Title" android:id="@+id/title" android:text="기록 보기 및 수정"/>
+    <Button style="@style/Bt_prev" android:id="@+id/bt"/>
+    <Button style="@style/Bt_next"/>
+
+    <RelativeLayout
+        style="@style/Body"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp">
+
+        <TextView
+            android:id="@+id/tv_report_date"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8월 4일 인아님 기록"
+            android:layout_margin="20dp"
+            style="@style/Content"/>
+
+        <Button
+            android:id="@+id/bt_edit"
+            android:layout_margin="10dp"
+            android:text="수정"
+            android:textSize="30dp"
+            android:textColor="@color/White"
+            android:layout_toRightOf="@+id/tv_report_date"
+            android:layout_width="100dp"
+            android:backgroundTint="@color/Green"
+            android:layout_height="wrap_content"
+            android:background="@drawable/capsule"/>
+
+        <ListView
+            android:id="@+id/p_info_list"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_report_date"
+            android:layout_width="500dp"
+            android:layout_height="match_parent">
+        </ListView>
+
+    </RelativeLayout>
+</RelativeLayout>
