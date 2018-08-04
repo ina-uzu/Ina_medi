@@ -10,7 +10,7 @@ public class MenuActivity extends Activity {
     TextView tv_stool, tv_urine, tv_consume;
     String name;
     Integer number;
-    Intent intent;
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);

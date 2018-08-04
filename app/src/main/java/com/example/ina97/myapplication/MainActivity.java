@@ -37,8 +37,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://54.202.222.14/accounts/login";
 
         bt_login = findViewById(R.id.bt_login);
         p_name = findViewById(R.id.p_name);
@@ -48,8 +46,11 @@ public class MainActivity extends Activity {
         name= p_name.getText().toString();
         number=parseInt(p_num.getText().toString());
 
+/*
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://54.202.222.14/accounts/login";
 
-   /*     final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url, new JSONObject(), networkSuccessListener(), networkErrorListener()){
+        final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url, new JSONObject(), networkSuccessListener(), networkErrorListener()){
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
 
@@ -61,14 +62,15 @@ public class MainActivity extends Activity {
 
                 return headers;
             }
-        };*/
+        };
+        */
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,MenuActivity.class);
-                intent.putExtra("Name", p_name.toString());
-                intent.putExtra("Number", p_num.toString());
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                intent.putExtra("Name", name);
+                intent.putExtra("Number", number);
 
                 //요청
                 //queue.add(objectRequest);
