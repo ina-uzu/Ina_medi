@@ -29,7 +29,6 @@ public class MenuActivity extends Activity {
         tv_report =findViewById(R.id.report);
         bt_prev=findViewById(R.id.Bnt_prev);
 
-
         //인사
         tv.setText(name + "님 안녕하세요!\n메뉴를 선택해 주세요");
 
@@ -39,6 +38,7 @@ public class MenuActivity extends Activity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(MenuActivity.this, TimeDateActivity.class);
                 intent2.putExtra("Page", "대변 횟수 측정");
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
             }
         });
@@ -49,6 +49,7 @@ public class MenuActivity extends Activity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(MenuActivity.this,TimeDateActivity.class);
                 intent2.putExtra("Page", "소변량 측정");
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
 
             }
@@ -60,6 +61,7 @@ public class MenuActivity extends Activity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(MenuActivity.this,TimeDateActivity.class);
                 intent2.putExtra("Page", "섭취량 기록");
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
 
             }
@@ -72,6 +74,7 @@ public class MenuActivity extends Activity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(MenuActivity.this,ReportActivity.class);
                 intent2.putExtra("Page", "기록 조회 및 수정");
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
 
             }
@@ -82,6 +85,7 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(MenuActivity.this,MainActivity.class);
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
 
             }

@@ -15,15 +15,18 @@ import android.widget.Toast;
 
 public class TimeDateActivity extends Activity {
     Button bt_prev, bt_next, bt_time,bt_date;
-    TextView title;
+    TextView title,tv;
     final int DIALOG_DATE = 1;
     final int DIALOG_TIME = 2;
+    boolean date_flag=false;
+    boolean time_flag=false;
 
     public void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.activity_tima_date);
 
         title=findViewById(R.id.title);
+        tv=findViewById(R.id.tv);
         bt_next=findViewById(R.id.Bnt_next);
         bt_prev=findViewById(R.id.Bnt_prev);
         bt_date=findViewById(R.id.bt_date);
@@ -32,8 +35,10 @@ public class TimeDateActivity extends Activity {
         //title 표시
         Intent intent = getIntent();
         String page_title= intent.getStringExtra("Page");
-        title.setText(page_title);
+        final String name = intent.getStringExtra("Name");
 
+        title.setText(page_title);
+        tv.setText(name +"님 날짜와 시간을 선택하고\n다음 버튼을 눌러주세요");
         //Date
         bt_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +60,7 @@ public class TimeDateActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(TimeDateActivity.this,MenuActivity.class);
+                intent2.putExtra("Name", name);
                 startActivity(intent2);
 
             }
@@ -64,10 +70,19 @@ public class TimeDateActivity extends Activity {
         bt_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(TimeDateActivity.this, StoolActivity.class);
-                Toast.makeText(getApplicationContext(),"Hello", Toast.LENGTH_LONG).show();
-                startActivity(intent2);
+                if (!date_flag)
+                    Toast.makeText(getApplicationContext(), "날짜를 선택해 주세요", Toast.LENGTH_LONG).show();
 
+                else if (!time_flag)
+                    Toast.makeText(getApplicationContext(), "시간을 선택해 주세요", Toast.LENGTH_LONG).show();
+
+                //다음 페이지로 이동
+                else {
+                    Intent intent2 = new Intent(TimeDateActivity.this, StoolActivity.class);
+                    intent2.putExtra("Name", name);
+                    startActivity(intent2);
+
+                }
             }
         });
 
@@ -80,6 +95,7 @@ public class TimeDateActivity extends Activity {
                         new DatePickerDialog.OnDateSetListener(){
                     public void onDateSet(DatePicker view, int year, int month, int day){
                         Toast.makeText(getApplicationContext(),year+"년 "+(month+1)+"월 "+day +"일을 선택했습니다",Toast.LENGTH_LONG).show();
+                        date_flag=true;
                     }
                         },2018,8,5);
                 return datePickerDialog;
@@ -90,6 +106,7 @@ public class TimeDateActivity extends Activity {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                                 Toast.makeText(getApplicationContext(),hour+"시 "+ minute +"분을 선택했습니다",Toast.LENGTH_LONG).show();
+                                time_flag=true;
                             }
                         }, 12,30,false);
                 return timePickerDialog;

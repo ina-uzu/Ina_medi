@@ -50,7 +50,7 @@
         <ListView
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/ll"
-            android:id="@+id/p_info_list"
+            android:id="@+id/report_list"
             android:layout_width="300dp"
             android:layout_height="match_parent">
         </ListView>
@@ -61,7 +61,6 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <Button style="@style/Bt_prev"/>
-        <Button style="@style/Bt_next"/>
+        <Button android:id="@+id/Bnt_prev" style="@style/Bt_prev"/>
     </RelativeLayout>
 </LinearLayout>

@@ -38,9 +38,11 @@ public class MainActivity extends Activity {
         p_name = findViewById(R.id.p_name);
         p_num= findViewById(R.id.p_num);
 
-/*
+        final String name= p_name.getText().toString();
+        final String number = p_num.getText().toString();
+
         final RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://54.202.222.14/accounts/login";
+        String url = "http://54.202.222.14/accounts/login/?next=/dashboard/";
 
         final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url, new JSONObject(), networkSuccessListener(), networkErrorListener()){
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -55,7 +57,6 @@ public class MainActivity extends Activity {
                 return headers;
             }
         };
-        */
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +67,7 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                     intent.putExtra("Name", p_name.getText().toString());
                     intent.putExtra("Number",p_num.getText().toString());
-                    //queue.add(objectRequest);
+                    queue.add(objectRequest);
                     startActivity(intent);
                 }
             }

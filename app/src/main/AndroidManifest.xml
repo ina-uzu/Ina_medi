@@ -19,8 +19,9 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".TimeDateActivity" />
-        <activity android:name=".ReportActivity"/>
         <activity android:name=".StoolActivity"/>
+        <activity android:name=".ReportActivity"/>
+
 
     </application>
 
