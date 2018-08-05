@@ -29,22 +29,14 @@ public class MainActivity extends Activity {
 
     Button bt_login;
     EditText p_name, p_num;
-    String name;
-    Integer number;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         bt_login = findViewById(R.id.bt_login);
         p_name = findViewById(R.id.p_name);
         p_num= findViewById(R.id.p_num);
-
-        //Login info
-        name= p_name.getText().toString();
-        number=parseInt(p_num.getText().toString());
 
 /*
         final RequestQueue queue = Volley.newRequestQueue(this);
@@ -68,13 +60,15 @@ public class MainActivity extends Activity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                intent.putExtra("Name", name);
-                intent.putExtra("Number", number);
 
-                //요청
-                //queue.add(objectRequest);
-                startActivity(intent);
+                //로그인 정보 모두 입력한 경우
+                if(p_name.getText()!=null && p_num.getText().toString()!=null){
+                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                    intent.putExtra("Name", p_name.getText().toString());
+                    intent.putExtra("Number",p_num.getText().toString());
+                    //queue.add(objectRequest);
+                    startActivity(intent);
+                }
             }
         });
     }

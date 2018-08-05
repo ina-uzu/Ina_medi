@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:weightSum="8" android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView style="@style/Title" android:id="@+id/title" android:text="대변 횟수 측정"/>
-    <Button style="@style/Bt_prev"/>
-    <Button style="@style/Bt_next"/>
+    <TextView
+        android:layout_weight="2"
+        style="@style/Title" android:id="@+id/title" android:text="대변 횟수 측정"/>
 
-    <RelativeLayout  style="@style/Body">
+    <RelativeLayout
+        android:layout_weight="5"
+        style="@style/Body">
 
         <TextView
         android:id="@+id/tv_stool_num"
@@ -24,4 +26,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     </RelativeLayout>
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    <Button style="@style/Bt_prev"/>
+    <Button style="@style/Bt_next"/>
+    </RelativeLayout>
+
+</LinearLayout>

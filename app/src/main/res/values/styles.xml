@@ -7,9 +7,9 @@
 
     <style name="Title">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_height">0dp</item>
         <item name="android:layout_alignParentTop">true</item>
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">30dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:gravity">center_vertical</item>
@@ -19,13 +19,12 @@
 
     <style name="Bt_prev">
         <item name="android:layout_width">140dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">20dp</item>
         <item name="android:text">이전</item>
         <item name="android:textSize">30dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_margin">20dp</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:background">@drawable/capsule</item>
     </style>
@@ -33,20 +32,19 @@
     <style name="Bt_next">
 
         <item name="android:layout_width">140dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">20dp</item>
         <item name="android:text">다음</item>
         <item name="android:textSize">30dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_margin">20dp</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:background">@drawable/capsule</item>
     </style>
 
     <style name="Content">
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
@@ -59,6 +57,17 @@
     <style name="Body">
         <item name="android:layout_below">@+id/title</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="Menu">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:background">@color/Green</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
