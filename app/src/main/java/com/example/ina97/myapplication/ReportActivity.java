@@ -1,7 +1,6 @@
 package com.example.ina97.myapplication;
 
 import android.app.Activity;
-import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +24,7 @@ public class ReportActivity extends Activity {
     ArrayList <ReportItem> list;
     TextView title;
     Button bt_prev;
-    Date date;
+    Date date = new Date(1,2,3);
 
     public void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
@@ -38,7 +37,7 @@ public class ReportActivity extends Activity {
         String page_title = intent.getStringExtra("Page");
         final String name = intent.getStringExtra("Name");
         title.setText(page_title);
-
+/*
         list = new ArrayList<ReportItem>();
         listView = findViewById(R.id.report_list);
 
@@ -55,7 +54,7 @@ public class ReportActivity extends Activity {
                 startActivity(intent2);
             }
         });
-
+*/
     }
 
     private class ListViewAdapter extends BaseAdapter{

@@ -71,10 +71,10 @@ public class TimeDateActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (!date_flag)
-                    Toast.makeText(getApplicationContext(), "날짜를 선택해 주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "날짜를 선택해 주세요", Toast.LENGTH_SHORT).show();
 
                 else if (!time_flag)
-                    Toast.makeText(getApplicationContext(), "시간을 선택해 주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "시간을 선택해 주세요", Toast.LENGTH_SHORT).show();
 
                 //다음 페이지로 이동
                 else {
@@ -94,7 +94,7 @@ public class TimeDateActivity extends Activity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(TimeDateActivity.this,
                         new DatePickerDialog.OnDateSetListener(){
                     public void onDateSet(DatePicker view, int year, int month, int day){
-                        Toast.makeText(getApplicationContext(),year+"년 "+(month+1)+"월 "+day +"일을 선택했습니다",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),year+"년 "+(month+1)+"월 "+day +"일을 선택했습니다",Toast.LENGTH_SHORT).show();
                         date_flag=true;
                     }
                         },2018,8,5);
@@ -105,7 +105,7 @@ public class TimeDateActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                                Toast.makeText(getApplicationContext(),hour+"시 "+ minute +"분을 선택했습니다",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),hour+"시 "+ minute +"분을 선택했습니다",Toast.LENGTH_SHORT).show();
                                 time_flag=true;
                             }
                         }, 12,30,false);

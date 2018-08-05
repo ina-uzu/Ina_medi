@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         final String number = p_num.getText().toString();
 
         final RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://54.202.222.14/accounts/login/?next=/dashboard/";
+        String url = "http://54.202.222.14/admin";
 
         final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url, new JSONObject(), networkSuccessListener(), networkErrorListener()){
             public Map<String, String> getHeaders() throws AuthFailureError {
