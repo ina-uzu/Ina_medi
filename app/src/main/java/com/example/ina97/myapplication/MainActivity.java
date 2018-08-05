@@ -7,6 +7,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,11 +23,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import static java.lang.Integer.parseInt;
 
 public class MainActivity extends Activity {
-
+    String token=null;
     Button bt_login;
     EditText p_name, p_num;
     @Override
@@ -42,21 +44,42 @@ public class MainActivity extends Activity {
         final String number = p_num.getText().toString();
 
         final RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://54.202.222.14/admin";
+        String url = "http://54.202.222.14/api-token-auth/";
 
-        final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url, new JSONObject(), networkSuccessListener(), networkErrorListener()){
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
+        JSONObject jsonObject =new JSONObject();
+        try {
+            jsonObject.put("username", "service");
+            jsonObject.put("password","service@service");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-                String credentials = name+":"+number;
-                String auth = "Basic"
-                        + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-                headers.put("Content-Type", "application/json");
-                headers.put("Authorization", auth);
+        //token
+        final JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,url,jsonObject, networkSuccessListener(), networkErrorListener()){
+        };
+        queue.add(objectRequest);
 
-                return headers;
+        //authorization
+        url="http://54.202.222.14/patients/api/patients-list/";
+        final JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG);
+            }
+        }){
+            public Map<String,String> getHeaders() throws AuthFailureError{
+                Map<String, String> header = new HashMap< String, String >();
+                p_num.setText("Token "+token);
+                header.put("Authorization", "Token "+token);
+                return header;
             }
         };
+
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,38 +90,35 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                     intent.putExtra("Name", p_name.getText().toString());
                     intent.putExtra("Number",p_num.getText().toString());
-                    queue.add(objectRequest);
+                    queue.add(loginRequest);
+                    Toast.makeText(getApplicationContext(), token, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 }
             }
         });
     }
 
-    private Response.Listener<JSONObject> networkSuccessListener(){
+    public Response.Listener<JSONObject> networkSuccessListener(){
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                String valStr=null;
-                String keyStr=null;
 
-                Iterator <String> key = response.keys();
-                try{
-                    keyStr = key.next();
-                    valStr = response.getString(keyStr);
-                }
-                catch (JSONException e){
+                try {
+                    token =response.getString("token");
+                    p_name.setText(token);
+
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         };
     }
 
-    private Response.ErrorListener networkErrorListener(){
+    public Response.ErrorListener networkErrorListener(){
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG).show();
             }
         };
     }
