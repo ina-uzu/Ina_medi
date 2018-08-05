@@ -8,40 +8,40 @@
         android:layout_weight="2"
         style="@style/Title" android:id="@+id/title" android:text="Title"/>
 
+    <TextView
+        android:layout_weight="2"
+        android:text="날짜와 시간을 입력하시고,다음 버튼을 눌러주세요"
+        style="@style/Content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+
     <ScrollView
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
         <LinearLayout
             android:gravity="center"
-            android:weightSum="6"
+            android:weightSum="2"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:layout_weight="1"
-            android:text="날짜와 시간을 입력하시고, 다음 버튼을 눌러주세요"
-            style="@style/Content"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp">
-        </TextView>
+            <Button
+                android:id="@+id/bt_date"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                style="@style/Menu"
+                android:text="날짜선택" />
 
-        <DatePicker
-            android:id="@+id/date"
-            android:layout_weight="2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"/>
-
-        <TimePicker
-            android:id="@+id/time"
-            android:layout_weight="2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:timePickerMode="spinner"/>
+            <Button
+                android:id="@+id/bt_time"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                style="@style/Menu"
+                android:text="시간 선택" />
         </LinearLayout>
     </ScrollView>>
 
